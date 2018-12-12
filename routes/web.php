@@ -16,6 +16,27 @@ Route::get('/welcome/{accion?}', function ($accion = null) {
         'accion' => $accion,
     ]);
 })->name('welcome');*/
+Route::get('/video', function () {
+    return view('video');
+});/*
+¿¿¿Por qué la ruta /video no funciona y, solamente, funciona si la ruta es /videov o /video_xxx, etc???
+Route::get('/video', function () {
+    return view('video');
+});
+Route::get('/video', function () {
+    return view('video');
+})->name('video');*/
+
+Route::get('/form/{accion?}', function ($accion = null) {
+    return view('form')->with([
+        'accion' => $accion,
+    ]);
+})->name('form');
+Route::post('/form-recibido/{accion?}', function ($accion = null) {
+    return view('form-recibido')->with([
+        'accion' => $accion,
+    ]);
+})->name('form_recibido');
 
 Route::get('/{accion?}', function ($accion = null) {
     return view('index')->with([
@@ -25,3 +46,13 @@ Route::get('/{accion?}', function ($accion = null) {
 
 Route::post('/insertar', 'MensajeController@insertar')
     ->name('mensajes_insertar');
+
+Route::post('/iniciar-sesion', 'LoginController@iniciarSesion')
+    ->name('iniciar_sesion');
+
+Route::get('/panel/admin', function () {
+    return view('panel.admin');
+})->name('panel_admin');
+Route::get('/panel/usuario', function () {
+    return view('panel.usuario');
+})->name('panel_usuario');

@@ -18,24 +18,15 @@
     @isset($accion)
     {{-- Habiendo mensajes de acción :: INI --}}
         @php
-            if($accion[0] == 'usu_noOK') {
+            $accion_datos = explode('_', $accion);
+            switch ($accion_datos[0]) {
+                case 'insertar':
+                    $modal_tit = 'Envío satisfactorio';
+                    $modal_msg = 'Su mensaje con ID ['.$accion_datos[1].'] fue recibido correctamente.
+                    Recibirá la correspondiente respuesta en su dirección de correo a la mayor brevedad.
 
-                $modal_tit = 'Usuario no existe';
-                $modal_msg = $accion[1];
-
-            } else {
-
-                $accion_datos = explode('_', $accion);
-                switch ($accion_datos[0]) {
-                    case 'insertar':
-                        $modal_tit = 'Envío satisfactorio';
-                        $modal_msg = 'Su mensaje con ID ['.$accion_datos[1].'] fue recibido correctamente.
-                        Recibirá la correspondiente respuesta en su dirección de correo a la mayor brevedad.
-
-                        Aloha!!';
-                        break;
-                }
-
+                    Aloha!!';
+                    break;
             }
         @endphp
     <!-- Modal-acción -->
@@ -78,14 +69,14 @@
             <div class="row">
                 <div class="mbr-white col-lg-8 col-md-7 content-container">
                     <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">
-                        TU PANADERÍA<br>Y PASTELERÍA<br>DE SIEMPRE
+                        BIENVENID@ a TU PANADERÍA<br>Y PASTELERÍA<br>DE SIEMPRE
                     </h1>
                     <p class="mbr-text pb-3 mbr-fonts-style display-5">
                         Estamos aquí para darte el mejor servicio, con la tradición del buen pan, una pastelería dulce y sabrosa.<br>
                         Si quieres estar informado, puedes suscribirte a nuestro Newsletter y, así, estarás al día de todos nuestros eventos.
                     </p>
                 </div>
-                <div class="col-lg-4 col-md-5">
+                {{--<div class="col-lg-4 col-md-5">
                     <div class="form-container" style="margin: 100px 0;">
                         <div class="media-container-column" data-form-type="formoid">
                             <div data-form-alert="" hidden="" class="align-center">
@@ -108,84 +99,8 @@
                                 </span>
                             </form>
                         </div>
-                    </div>{{----}}
-                </div>
-            </div>
-        </div>
-        <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
-            <a href="#next">
-                <i class="mbri-down mbr-iconfont"></i>
-            </a>
-        </div>
-    </section>
-
-    <section class="features18 popup-btn-cards cid-r8KTRKwsGw" id="nosotros">
-        <div class="container">
-            <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
-                Nosotros somos así
-            </h2>
-            <h3 class="mbr-section-subtitle display-5 align-center mbr-fonts-style mbr-light">
-                Basado todo nuevo trabajo en su raíz, la Masa Madre
-            </h3>
-            <div class="media-container-row pt-5 ">
-                <div class="card p-3 col-12 col-md-6 col-lg-4">
-                    <div class="card-wrapper ">
-                        <div class="card-img">
-                            <div class="mbr-overlay"></div>
-                            <div class="mbr-section-btn text-center">
-                                <a href="#" class="btn btn-primary display-4">Saber más</a>
-                            </div>
-                            <img src="/assets/images/01.jpg" alt="Cariño">
-                        </div>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style display-7">
-                                Amor por la materia prima
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style align-left display-7">
-                                Lorem ipsum an easy tal tal - just drop site elements to your page, add content and style it to look the way you like.
-                            </p>
-                        </div>
                     </div>
-                </div>
-                <div class="card p-3 col-12 col-md-6 col-lg-4">
-                    <div class="card-wrapper">
-                        <div class="card-img">
-                            <div class="mbr-overlay"></div>
-                            <div class="mbr-section-btn text-center">
-                                <a href="#" class="btn btn-primary display-4">Saber más</a>
-                            </div>
-                            <img src="/assets/images/02.jpg" alt="Horno">
-                        </div>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style display-7">
-                                Horno de leña
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
-                            Aquí lo preparamos todo para darle ese sabor especial a nuestros productos. You make a friend. You don't have to create a version.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card p-3 col-12 col-md-6 col-lg-4">
-                    <div class="card-wrapper">
-                        <div class="card-img">
-                            <div class="mbr-overlay"></div>
-                            <div class="mbr-section-btn text-center"><a href="#" class="btn btn-primary display-4">Saber más</a></div>
-                            <img src="/assets/images/03.jpg" alt="Tu">
-                        </div>
-                        <div class="card-box">
-                            <h4 class="card-title mbr-fonts-style display-7">
-                                Te servimos
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
-                                Tu eres lo importante offers many site blocks in several themes, and though these blocks are pre-made, they are flexible.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
+                </div>--}}
             </div>
         </div>
         <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
@@ -198,7 +113,7 @@
     <section class="mbr-gallery mbr-slider-carousel cid-r8KPNcKK39" id="gallery3-9">
         <div style="padding-top: 80px;">
             <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">
-                Galería de Productos
+                Elige uno de los Productos
             </h2>
             <div>
                 <!-- Filter --><!-- Gallery -->
@@ -407,8 +322,6 @@
     <script src="/assets/gallery/script.js"></script>
     {{--¡¡ATENCIÓN!! ... Este SCRIPT no deja que el formulario se envíe
     <script src="/assets/formoid/formoid.min.js"></script>--}}
-    {{--Funciones Propias--}}
-    <script type="text/javascript" src="/js/main.js"></script>
 
     @isset($accion)
     <!--Mostrando MODAL de acción en la carga de la página-->
